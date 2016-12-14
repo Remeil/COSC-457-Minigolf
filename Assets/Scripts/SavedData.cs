@@ -1,4 +1,6 @@
-﻿public static class SavedData
+﻿using Debug = UnityEngine.Debug;
+
+public static class SavedData
 {
     public static int[] shotsTaken;
     public static int hole;

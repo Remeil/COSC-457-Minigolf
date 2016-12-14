@@ -10,7 +10,6 @@ public class BoardRandomizer : MonoBehaviour
 	    {
             foreach (Transform ground in gameObject.transform)
 	        {
-                ground
 	            ground.gameObject.GetComponent<RotatingGround>().Rotate();
 	        }
 	    }

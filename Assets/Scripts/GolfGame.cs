@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum GameState
@@ -16,7 +18,7 @@ public class GolfGame : MonoBehaviour
     public GameState gameState { get; private set; }
     public System.Random rand { get; private set; }
     public bool ballInMotion { get; private set; }
-    public int par;
+    public int[] par;
     public int numberOfHoles;
     public string nextScene;
 
@@ -34,7 +36,7 @@ public class GolfGame : MonoBehaviour
 	    Golf = this;
 
 	    SavedData.SetNumberOfHoles(numberOfHoles);
-	    SavedData.hole = 1;
+	    SavedData.SetPar(par);
 
         shotScoreNames = new Dictionary<int, string>
         {
@@ -67,10 +69,10 @@ public class GolfGame : MonoBehaviour
 	            Cursor.lockState = CursorLockMode.None;
 	            break;
 	    }
-
-	    holeText.text = "Hole " + SavedData.hole + " of " + numberOfHoles;
+        
+        holeText.text = "Hole " + SavedData.hole + " of " + numberOfHoles;
 	    shotsTakenText.text = "Shots Taken: " + SavedData.shotsTaken[SavedData.hole - 1];
-	    parText.text = "Par: " + par;
+	    parText.text = "Par: " + SavedData.par[SavedData.hole - 1];
 	}
 
     public static void BallShot()
@@ -113,5 +115,26 @@ public class GolfGame : MonoBehaviour
     public static void HoleFinished()
     {
         Golf.gameState = GameState.HoleEnd;
+
+        var holeScore = "";
+        if (Golf.shotScoreNames.Keys.Contains(SavedData.shotsTaken[SavedData.hole - 1] - SavedData.par[SavedData.hole - 1]))
+        {
+            holeScore = Golf.shotScoreNames[SavedData.shotsTaken[SavedData.hole - 1] - SavedData.par[SavedData.hole - 1]];
+        }
+        else
+        {
+            holeScore = "+" + (SavedData.shotsTaken[SavedData.hole - 1] - SavedData.par[SavedData.hole - 1]);
+        }
+
+        Golf.holeScoreText.enabled = true;
+        Golf.holeScoreText.text = holeScore;
+
+        Golf.Invoke("LoadHole", 3);
+    }
+
+    public void LoadHole()
+    {
+        SavedData.hole++;
+        SceneManager.LoadScene(nextScene);
     }
 }

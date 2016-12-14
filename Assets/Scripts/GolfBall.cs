@@ -73,17 +73,14 @@ public class GolfBall : MonoBehaviour
 	    {
 	        var rigidbody = gameObject.GetComponent<Rigidbody>();
 
-	        if (rigidbody.velocity.magnitude < 1 && rigidbody.velocity.magnitude > Physics.sleepThreshold)
+	        if (rigidbody.velocity.magnitude < 1 && rigidbody.velocity.magnitude > Physics.sleepThreshold && Mathf.Abs(rigidbody.velocity.y) < .01)
 	        {
-	            rigidbody.velocity *= .85f;
-	        }
-            else if (rigidbody.velocity.magnitude <= Physics.sleepThreshold)
-	        {
-	            rigidbody.Sleep();
+	            rigidbody.velocity *= .95f;
 	        }
 
 	    }
-        else if (transform.position.y < -10)
+
+        if (transform.position.y < -10)
 	    {
 	        outOfBoundsText.enabled = true;
 	        transform.position = lastPosition;
