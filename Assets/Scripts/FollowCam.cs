@@ -23,7 +23,7 @@ public class FollowCam : MonoBehaviour
             gameObject.transform.position = newPosition;
 
             var mouseX = Input.GetAxis("Mouse X");
-            var mouseY = Input.GetAxis("Mouse Y");
+            var mouseY = -Input.GetAxis("Mouse Y");
 
             gameObject.transform.RotateAround(pointOfInterest.transform.position, Vector3.up, sensitivity * mouseX);
 

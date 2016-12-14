@@ -19,7 +19,8 @@ public class GolfBall : MonoBehaviour
     {
         puttStrength = 10;
         GetComponent<Rigidbody>().maxAngularVelocity = 100;
-        lastPosition.y = .05f;
+
+        lastPosition = gameObject.transform.position;
     }
     
 	void Update () {

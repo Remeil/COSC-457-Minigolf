@@ -14,6 +14,7 @@ public class GolfGame : MonoBehaviour
 {
     public static GolfGame Golf;
     public GameState gameState { get; private set; }
+    public System.Random rand { get; private set; }
     public int par;
     public int numberOfHoles;
 
@@ -44,6 +45,8 @@ public class GolfGame : MonoBehaviour
             {2, "Double Bogey" },
             {3, "Triple Bogey" }
         };
+
+        rand = new System.Random();
 	}
 	
 	// Update is called once per frame
