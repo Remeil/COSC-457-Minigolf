@@ -64,10 +64,24 @@ public class GolfBall : MonoBehaviour
                 shotStrengthText.text = "Shot Strength: " + ((puttStrength * 100) / PUTT_STRENGTH_MAX) + "%";
             }
         }
-        else if (GolfGame.Golf.gameState == GameState.BallInMotion && gameObject.GetComponent<Rigidbody>().IsSleeping())
+        else if ((GolfGame.Golf.gameState == GameState.BallInMotion || GolfGame.Golf.gameState == GameState.OverviewCamera) && gameObject.GetComponent<Rigidbody>().IsSleeping())
 	    {
 	        lastPosition = gameObject.transform.position;
 	        GolfGame.BallAtRest();
+	    }
+        else if (GolfGame.Golf.ballInMotion)
+	    {
+	        var rigidbody = gameObject.GetComponent<Rigidbody>();
+
+	        if (rigidbody.velocity.magnitude < 1 && rigidbody.velocity.magnitude > Physics.sleepThreshold)
+	        {
+	            rigidbody.velocity *= .85f;
+	        }
+            else if (rigidbody.velocity.magnitude <= Physics.sleepThreshold)
+	        {
+	            rigidbody.Sleep();
+	        }
+
 	    }
         else if (transform.position.y < -10)
 	    {

@@ -15,8 +15,10 @@ public class GolfGame : MonoBehaviour
     public static GolfGame Golf;
     public GameState gameState { get; private set; }
     public System.Random rand { get; private set; }
+    public bool ballInMotion { get; private set; }
     public int par;
     public int numberOfHoles;
+    public string nextScene;
 
     public Text shotsTakenText;
     public Text parText;
@@ -74,11 +76,13 @@ public class GolfGame : MonoBehaviour
     public static void BallShot()
     {
         Golf.gameState = GameState.BallInMotion;
+        Golf.ballInMotion = true;
         SavedData.shotsTaken[SavedData.hole - 1]++;
     }
 
     public static void BallAtRest()
     {
+        Golf.ballInMotion = false;
         if (Golf.gameState == GameState.BallInMotion)
         {
             Golf.gameState = GameState.ReadyToShoot;
@@ -94,7 +98,14 @@ public class GolfGame : MonoBehaviour
                 Golf.gameState = GameState.OverviewCamera;
                 break;
             case GameState.OverviewCamera:
-                Golf.gameState = GameState.BallInMotion;
+                if (Golf.ballInMotion)
+                {
+                    Golf.gameState = GameState.BallInMotion;
+                }
+                else
+                {
+                    Golf.gameState = GameState.ReadyToShoot;
+                }
                 break;
         }
     }
