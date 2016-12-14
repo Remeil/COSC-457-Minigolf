@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: d8fcd76a2f097cd459531abbed40bcda
+timeCreated: 1481700401
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - DejaVu Serif
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7cea8b80ce77f4140ac2dcb89361b6c0, type: 3}
+  - {fileID: 12800000, guid: bdc58242434587b44b99d8faea90ee1b, type: 3}
+  - {fileID: 12800000, guid: b4cb55b5867c3f94da2ba574b2e40687, type: 3}
+  - {fileID: 12800000, guid: 22fa45e8d849e8640931724c1a54b537, type: 3}
+  - {fileID: 12800000, guid: 9f0fb4c94118664478371a38053ce798, type: 3}
+  - {fileID: 12800000, guid: a09fedcd336bbad4fbc7fe7cf232f2d4, type: 3}
+  - {fileID: 12800000, guid: b3679f1e382df574fa0702b15409edbf, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

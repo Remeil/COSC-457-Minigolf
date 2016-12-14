@@ -28,6 +28,10 @@ public class GolfBall : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                var audio = gameObject.GetComponent<AudioSource>();
+
+                audio.Play();
+
                 var cameraAngle = gameObject.transform.position - gameCamera.transform.position;
 
                 cameraAngle.y = 0;

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 34f5e93f24370a241829437fe6b2f779
+timeCreated: 1481700378
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - DejaVu Sans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 112145244d3711145814e3ef458bfee1, type: 3}
+  - {fileID: 12800000, guid: 0d252228e3abe174cb4c8f85a69b7f1a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

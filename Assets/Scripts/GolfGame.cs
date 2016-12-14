@@ -73,6 +73,14 @@ public class GolfGame : MonoBehaviour
         holeText.text = "Hole " + SavedData.hole + " of " + numberOfHoles;
 	    shotsTakenText.text = "Shots Taken: " + SavedData.shotsTaken[SavedData.hole - 1];
 	    parText.text = "Par: " + SavedData.par[SavedData.hole - 1];
+
+	    if (Input.GetKeyDown(KeyCode.Escape))
+	    {
+	        Golf.gameState = GameState.HoleEnd;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene("Scoreboard");
+	    }
 	}
 
     public static void BallShot()
