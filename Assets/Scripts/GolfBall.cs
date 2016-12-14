@@ -30,6 +30,9 @@ public class GolfBall : MonoBehaviour
             {
                 var audio = gameObject.GetComponent<AudioSource>();
 
+                audio.pitch = 1f;
+                audio.volume = 1f;
+
                 audio.Play();
 
                 var cameraAngle = gameObject.transform.position - gameCamera.transform.position;
@@ -92,6 +95,19 @@ public class GolfBall : MonoBehaviour
             Invoke("HideText", 3);
 	    }
 	}
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "wall")
+        {
+            var audio = gameObject.GetComponent<AudioSource>();
+            audio.pitch = .5f;
+
+            audio.volume = Mathf.Min(gameObject.GetComponent<Rigidbody>().velocity.magnitude * .2f , .8f);
+
+            audio.Play();
+        }
+    }
 
     void HideText()
     {
